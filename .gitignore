@@ -5,3 +5,4 @@ __pycache__/
 db.sqlite3
 staticfiles/
 db.sqlite3.backup
+sqlite_data.json
