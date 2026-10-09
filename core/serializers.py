@@ -19,9 +19,11 @@ class ProductSerializers(serializers.ModelSerializer):
     def validate(self, data):
         price = data.get('price')
         stock = data.get('stock')
-        if price > 10000 and stock < 5:
-            raise serializers.ValidationError("Expensive products must have at least 5 items in stock.")
+        if price is not None and stock is not None and  price > 100000 and stock < 5:
+                raise serializers.ValidationError("Expensive products must have at least 5 items in stock.")
+        return data
 
     class Meta:
         model = Product
         fields = '__all__'
+        extra_kwargs = {'owner':{'read_only': True}}
